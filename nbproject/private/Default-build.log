@@ -1,0 +1,10 @@
+g++ -g --std=c++11 -Wall main.cpp nn.cpp OpenCLKernels.cpp common.cpp mg.cpp -lOpenCL -pthread -onn-opencl
+nn.cpp: In member function ‘void nn::BP()’:
+nn.cpp:428:30: error: ‘matrix_cl_float’ has no member named ‘hostData’
+     bias_inc.set(1, bias_inc.hostData.size(), 0);
+                              ^
+OpenCLKernels.cpp: In member function ‘void OpenCLKernels::runMatrixMultiplicationSigmoid(const matrix_cl_float&, const matrix_cl_float&, const matrix_cl_float&, matrix_cl_float*, bool, bool, cl_float, cl_float)’:
+OpenCLKernels.cpp:140:91: error: no match for ternary ‘operator?:’ (operand types are ‘bool’, ‘int’, and ‘cl::Buffer’)
+     matrixMultiplicationSigmoidKernel->setArg(3, (bias==nullptr)?0:*(bias->data.deviceData));
+                                                                                           ^
+make: *** [nn-opencl] Error 1

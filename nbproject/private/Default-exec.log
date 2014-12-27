@@ -1,0 +1,15 @@
+called: g++
+	/home/jordi/Escritorio/opencl/nemesis
+	g++
+	-g
+	--std=c++11
+	-Wall
+	main.cpp
+	nn.cpp
+	OpenCLKernels.cpp
+	common.cpp
+	mg.cpp
+	-lOpenCL
+	-pthread
+	-onn-opencl
+
